@@ -1,0 +1,690 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | CareerScope</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="tooplate-2167-orbital-style.css">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    button, input {
+      font: inherit;
+    }
+
+    .auth-nav {
+      position: relative;
+      z-index: 10;
+      padding: 28px 6%;
+    }
+
+    .auth-nav a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .auth-nav span {
+      color: #06b6d4;
+    }
+
+    .auth-layout {
+      position: relative;
+      z-index: 2;
+      min-height: calc(100vh - 85px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 20px 55px;
+    }
+
+    .auth-card {
+      width: 100%;
+      max-width: 465px;
+      padding: 38px;
+      border: 1px solid rgba(139, 92, 246, .35);
+      border-radius: 24px;
+      background: rgba(15, 10, 27, .86);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 0 70px rgba(139, 92, 246, .12);
+    }
+
+    .auth-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      line-height: 1.8;
+      color: #06b6d4;
+      margin-bottom: 16px;
+    }
+
+    .auth-card h1 {
+      font-size: clamp(30px, 6vw, 40px);
+      line-height: 1.12;
+      letter-spacing: -1.5px;
+      margin: 0 0 12px;
+    }
+
+    .auth-description {
+      color: rgba(255,255,255,.62);
+      line-height: 1.7;
+      font-size: 14px;
+      margin: 0 0 26px;
+    }
+
+    .auth-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5px;
+      padding: 5px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.045);
+      margin-bottom: 22px;
+    }
+
+    .auth-tabs button,
+    .method-tabs button {
+      border: 0;
+      cursor: pointer;
+      transition: background .2s, color .2s, border-color .2s;
+    }
+
+    .auth-tabs button {
+      padding: 12px;
+      color: rgba(255,255,255,.6);
+      border-radius: 9px;
+      background: transparent;
+      font-size: 14px;
+    }
+
+    .auth-tabs button.active {
+      background: linear-gradient(110deg, #8b5cf6, #5634b6);
+      color: white;
+    }
+
+    .method-tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .method-tabs button {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 9px;
+      color: rgba(255,255,255,.65);
+      background: rgba(255,255,255,.025);
+      font-size: 13px;
+    }
+
+    .method-tabs button.active {
+      color: #fff;
+      border-color: #8b5cf6;
+      background: rgba(139,92,246,.14);
+    }
+
+    .field {
+      margin-bottom: 18px;
+    }
+
+    .field label {
+      display: block;
+      font-size: 13px;
+      color: rgba(255,255,255,.82);
+      margin-bottom: 9px;
+    }
+
+    .field input {
+      display: block;
+      width: 100%;
+      min-width: 0;
+      padding: 14px 15px;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 10px;
+      background: rgba(255,255,255,.04);
+      color: white;
+      outline: none;
+      font-size: 14px;
+      transition: border-color .2s, box-shadow .2s;
+    }
+
+    .field input:focus {
+      border-color: #8b5cf6;
+      box-shadow: 0 0 0 3px rgba(139,92,246,.12);
+    }
+
+    .field input::placeholder {
+      color: rgba(255,255,255,.35);
+    }
+
+    .auth-options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin: 2px 0 22px;
+      font-size: 12px;
+      color: rgba(255,255,255,.65);
+    }
+
+    .remember {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .auth-options a,
+    .auth-footer a {
+      color: #67dff1;
+      text-decoration: none;
+    }
+
+    .auth-options a:hover,
+    .auth-footer a:hover {
+      text-decoration: underline;
+    }
+
+    .primary-btn,
+    .guest-btn {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      border-radius: 11px;
+      cursor: pointer;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      transition: transform .2s, box-shadow .2s, border-color .2s;
+    }
+
+    .primary-btn {
+      border: 0;
+      color: white;
+      background: linear-gradient(100deg, #8051ed, #06a9c7);
+    }
+
+    .guest-btn {
+      margin-top: 14px;
+      border: 1px solid rgba(139,92,246,.4);
+      color: #e9e3ff;
+      background: rgba(139,92,246,.08);
+    }
+
+    .primary-btn:hover,
+    .guest-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(139,92,246,.2);
+    }
+
+    .guest-btn:hover {
+      border-color: #06b6d4;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 22px 0 8px;
+      color: rgba(255,255,255,.4);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 2px;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: "";
+      height: 1px;
+      flex: 1;
+      background: rgba(255,255,255,.12);
+    }
+
+    .guest-panel {
+      display: none;
+      margin-top: 20px;
+      padding: 20px 0 0;
+      border-top: 1px solid rgba(255,255,255,.1);
+    }
+
+    .guest-panel.show {
+      display: block;
+      animation: guestReveal .25s ease;
+    }
+
+    .guest-panel p {
+      color: rgba(255,255,255,.6);
+      font-size: 13px;
+      line-height: 1.7;
+      margin: 0 0 17px;
+    }
+
+    .guest-panel .field {
+      margin-bottom: 14px;
+    }
+
+    .status-message {
+      display: none;
+      padding: 12px 13px;
+      margin-top: 17px;
+      border-radius: 9px;
+      font-size: 13px;
+      line-height: 1.6;
+      overflow-wrap: anywhere;
+    }
+
+    .status-message.info {
+      display: block;
+      background: rgba(6,182,212,.09);
+      border: 1px solid rgba(6,182,212,.3);
+      color: #b8f4ff;
+    }
+
+    .status-message.error {
+      display: block;
+      background: rgba(255,85,115,.09);
+      border: 1px solid rgba(255,85,115,.3);
+      color: #ffb5c0;
+    }
+
+    .auth-footer {
+      text-align: center;
+      color: rgba(255,255,255,.48);
+      font-size: 11px;
+      line-height: 1.8;
+      margin-top: 23px;
+    }
+
+    .back-link {
+      display: block;
+      width: fit-content;
+      margin: 24px auto 0;
+      color: rgba(255,255,255,.58);
+      font-size: 12px;
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      color: #67dff1;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    @keyframes guestReveal {
+      from {
+        opacity: 0;
+        transform: translateY(-5px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 500px) {
+      .auth-card {
+        padding: 27px 21px;
+        border-radius: 20px;
+      }
+
+      .auth-nav {
+        padding: 22px;
+      }
+
+      .auth-options {
+        font-size: 11px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="visuals-on">
+  <div class="aura"></div>
+  <div class="stars"></div>
+
+  <nav class="auth-nav">
+    <a href="index.html">CAREER<span>SCOPE</span></a>
+  </nav>
+
+  <main class="auth-layout">
+    <section class="auth-card">
+      <div class="auth-label">YOUR CAREER JOURNEY STARTS HERE</div>
+
+      <h1 id="authHeading">WELCOME</h1> 
+
+      <p class="auth-description" id="authDescription">
+        Sign in to explore career paths, job trends and discover your next opportunity.
+      </p>
+
+      <div class="auth-tabs" role="tablist" aria-label="Account options">
+        <button type="button" class="active" id="loginTab"
+          role="tab" aria-selected="true">Login</button>
+        <button type="button" id="signupTab"
+          role="tab" aria-selected="false">Sign up</button>
+      </div>
+
+      <div class="method-tabs" aria-label="Sign-in method">
+        <button type="button" class="active" id="emailTab"
+          aria-pressed="true">Email</button>
+        <button type="button" id="phoneTab"
+          aria-pressed="false">Phone</button>
+      </div>
+
+      <form id="authForm">
+        <div class="field" id="nameField" hidden>
+          <label for="fullName">Full name</label>
+          <input type="text" id="fullName"
+            placeholder="Enter your full name"
+            autocomplete="name" maxlength="80">
+        </div>
+
+        <div class="field" id="emailField">
+          <label for="email">Email address</label>
+          <input type="email" id="email"
+            placeholder="you@example.com"
+            autocomplete="email">
+        </div>
+
+        <div class="field" id="phoneField" hidden>
+          <label for="phone">Phone number</label>
+          <input type="tel" id="phone"
+            placeholder="+91 98765 43210"
+            autocomplete="tel" inputmode="tel">
+        </div>
+
+        <div class="field" id="passwordField">
+          <label for="password">Password</label>
+          <input type="password" id="password"
+            placeholder="Enter your password"
+            autocomplete="current-password" minlength="8">
+        </div>
+
+        <div class="field" id="confirmField" hidden>
+          <label for="confirmPassword">Confirm password</label>
+          <input type="password" id="confirmPassword"
+            placeholder="Enter your password again"
+            autocomplete="new-password" minlength="8">
+        </div>
+
+        <div class="auth-options" id="loginOptions">
+          <label class="remember">
+            <input type="checkbox" id="remember">
+            Remember me
+          </label>
+          <a href="#" id="forgotLink">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="primary-btn" id="submitBtn">
+          SIGN IN
+        </button>
+
+        <div class="status-message" id="statusMessage"
+          role="status" aria-live="polite"></div>
+      </form>
+
+      <div class="divider">OR CONTINUE WITHOUT AN ACCOUNT</div>
+
+      <button type="button" class="guest-btn" id="guestButton"
+        aria-expanded="false" aria-controls="guestPanel">
+        CONTINUE AS GUEST
+      </button>
+
+      <div class="guest-panel" id="guestPanel">
+        <p>
+          Explore CareerScope without creating an account.
+          Enter your name to personalize your dashboard.
+        </p>
+
+        <form id="guestForm">
+          <div class="field">
+            <label for="guestNameInput">Your name</label>
+            <input type="text" id="guestNameInput"
+              placeholder="Enter your name"
+              maxlength="50" autocomplete="name" required>
+          </div>
+
+          <button type="submit" class="primary-btn">
+            EXPLORE AS GUEST
+          </button>
+        </form>
+      </div>
+
+      <div class="auth-footer">
+        By continuing, you agree to our Terms of Service and Privacy Policy.
+        <br>
+        Demo authentication only — account sign-in requires a connected service.
+      </div>
+
+      <a href="index.html" class="back-link">← Back to the home page</a>
+    </section>
+  </main>
+
+  <script>
+    (() => {
+      const $ = (id) => document.getElementById(id);
+
+      const loginTab = $("loginTab");
+      const signupTab = $("signupTab");
+      const emailTab = $("emailTab");
+      const phoneTab = $("phoneTab");
+
+      const heading = $("authHeading");
+      const description = $("authDescription");
+      const authForm = $("authForm");
+      const submitBtn = $("submitBtn");
+      const statusMessage = $("statusMessage");
+
+      const nameField = $("nameField");
+      const emailField = $("emailField");
+      const phoneField = $("phoneField");
+      const passwordField = $("passwordField");
+      const confirmField = $("confirmField");
+      const loginOptions = $("loginOptions");
+
+      const passwordInput = $("password");
+      const confirmPasswordInput = $("confirmPassword");
+      const fullNameInput = $("fullName");
+      const emailInput = $("email");
+      const phoneInput = $("phone");
+
+      const guestButton = $("guestButton");
+      const guestPanel = $("guestPanel");
+      const guestForm = $("guestForm");
+      const guestNameInput = $("guestNameInput");
+
+      let mode = "login";
+      let method = "email";
+
+      function showStatus(text, type = "info") {
+        statusMessage.textContent = text;
+        statusMessage.className = "status-message " + type;
+      }
+
+      function clearStatus() {
+        statusMessage.textContent = "";
+        statusMessage.className = "status-message";
+      }
+
+      function updateScreen() {
+        const isSignup = mode === "signup";
+        const isEmail = method === "email";
+
+        loginTab.classList.toggle("active", !isSignup);
+        signupTab.classList.toggle("active", isSignup);
+        loginTab.setAttribute("aria-selected", String(!isSignup));
+        signupTab.setAttribute("aria-selected", String(isSignup));
+
+        emailTab.classList.toggle("active", isEmail);
+        phoneTab.classList.toggle("active", !isEmail);
+        emailTab.setAttribute("aria-pressed", String(isEmail));
+        phoneTab.setAttribute("aria-pressed", String(!isEmail));
+
+        nameField.hidden = !isSignup;
+        emailField.hidden = !isEmail;
+        phoneField.hidden = isEmail;
+        passwordField.hidden = !isEmail;
+        confirmField.hidden = !isSignup || !isEmail;
+        loginOptions.hidden = isSignup;
+
+        fullNameInput.required = isSignup;
+        emailInput.required = isEmail;
+        phoneInput.required = !isEmail;
+        passwordInput.required = isEmail;
+        confirmPasswordInput.required = isSignup && isEmail;
+
+        passwordInput.autocomplete =
+          isSignup ? "new-password" : "current-password";
+
+        if (isSignup) {
+          heading.textContent = "Create your account.";
+          description.textContent = isEmail
+            ? "Join CareerScope and start planning your future."
+            : "Enter your details to begin phone verification.";
+          submitBtn.textContent = isEmail
+            ? "CREATE ACCOUNT"
+            : "CONTINUE WITH PHONE";
+        } else {
+          heading.textContent = "WELCOME";
+          description.textContent = isEmail
+            ? "Sign in to explore career paths, job trends and your next opportunity."
+            : "Enter your phone number to begin secure sign-in.";
+          submitBtn.textContent = isEmail
+            ? "SIGN IN"
+            : "CONTINUE WITH PHONE";
+        }
+
+        clearStatus();
+      }
+
+      loginTab.addEventListener("click", () => {
+        mode = "login";
+        updateScreen();
+      });
+
+      signupTab.addEventListener("click", () => {
+        mode = "signup";
+        updateScreen();
+      });
+
+      emailTab.addEventListener("click", () => {
+        method = "email";
+        updateScreen();
+      });
+
+      phoneTab.addEventListener("click", () => {
+        method = "phone";
+        updateScreen();
+      });
+
+      $("forgotLink").addEventListener("click", (event) => {
+        event.preventDefault();
+        showStatus(
+          "Password reset will be available after an authentication service is connected."
+        );
+      });
+
+      authForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        clearStatus();
+
+        if (!authForm.checkValidity()) {
+          authForm.reportValidity();
+          return;
+        }
+
+        if (method === "phone") {
+          showStatus(
+            "Phone sign-in needs an authentication provider to send and verify a real OTP. No account has been created."
+          );
+          return;
+        }
+
+        if (mode === "signup" &&
+            passwordInput.value !== confirmPasswordInput.value) {
+          showStatus("Your passwords do not match. Please try again.", "error");
+          confirmPasswordInput.focus();
+          return;
+        }
+
+        if (passwordInput.value.length < 8) {
+          showStatus(
+            "Please use a password with at least 8 characters.",
+            "error"
+          );
+          return;
+        }
+
+        showStatus(
+          mode === "signup"
+            ? "The sign-up interface is ready, but account creation needs a secure authentication service. You can continue as a guest for now."
+            : "Login is not connected to an authentication service yet. You can continue as a guest to open the dashboard."
+        );
+      });
+
+      guestButton.addEventListener("click", () => {
+        const isOpen = guestPanel.classList.toggle("show");
+        guestButton.setAttribute("aria-expanded", String(isOpen));
+        clearStatus();
+
+        if (isOpen) {
+          guestNameInput.focus();
+        }
+      });
+
+      guestForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const name = guestNameInput.value.trim();
+
+        if (!name) {
+          showStatus("Please enter your name to continue.", "error");
+          guestNameInput.focus();
+          return;
+        }
+
+        try {
+          sessionStorage.setItem("guestName", name);
+          sessionStorage.setItem("guestMode", "true");
+        } catch (error) {
+          showStatus(
+            "Your browser blocked session storage. Please enable site storage and try again.",
+            "error"
+          );
+          return;
+        }
+
+        window.location.href = "dashboard.html";
+      });
+
+      updateScreen();
+    })();
+  </script>
+</body>
+</html>

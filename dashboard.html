@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CareerScope | Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tooplate-2167-orbital-style.css">
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body class="visuals-on dashboard-page">
+  <div class="aura"></div><div class="stars"></div>
+  <div class="dashboard-shell">
+    <aside class="dashboard-sidebar" id="dashboardSidebar">
+      <a href="index.html" class="dashboard-logo"><span class="logo-orb">✦</span><span>CAREER<span class="cyan">SCOPE</span><small>JOB MARKET INTELLIGENCE</small></span></a> <a href="#overview" class="personal-back-link" id="backToDashboard">
+  ← Back to Dashboard
+</a>
+      <p class="menu-heading">WORKSPACE</p>
+      <nav class="sidebar-menu" aria-label="Workspace navigation">
+        <a href="#overview" class="menu-link active" data-section="overview"><span class="nav-icon">⌂</span><span>Dashboard</span></a>
+        <a href="#trends" class="menu-link" data-section="trends"><span class="nav-icon">↗</span><span>Job Market Trends</span></a>
+        <a href="#jobs" class="menu-link" data-section="jobs"><span class="nav-icon">⌕</span><span>Explore Jobs</span></a>
+        <a href="#salary" class="menu-link" data-section="salary"><span class="nav-icon">◈</span><span>Salary & Locations</span></a>
+        <a href="#careers" class="menu-link" data-section="careers"><span class="nav-icon">◎</span><span>Career Explorer</span></a>
+      </nav>
+      <p class="menu-heading personal-menu-heading">MY CAREER</p>
+      <nav class="sidebar-menu personal-menu" aria-label="My career navigation">
+        <a href="#profile" class="menu-link" data-section="profile"><span class="nav-icon">♙</span><span>My Profile</span></a>
+        <a href="#resume" class="menu-link" data-section="resume"><span class="nav-icon">▤</span><span>Resume Analyzer</span></a>
+        <a href="#skills" class="menu-link" data-section="skills"><span class="nav-icon">◇</span><span>Skill Gap & Roadmap</span></a>
+        <a href="#learning" class="menu-link" data-section="learning"><span class="nav-icon">⌘</span><span>Learning & Interviews</span></a>
+        <a href="#applications" class="menu-link" data-section="applications"><span class="nav-icon">▣</span><span>Applications</span></a>
+      </nav>
+      <p class="menu-heading personal-menu-heading">PREFERENCES</p>
+      <nav class="sidebar-menu personal-menu" aria-label="Preferences navigation">
+        <a href="#saved" class="menu-link" data-section="saved"><span class="nav-icon">☆</span><span>Saved Items</span></a>
+        <a href="#settings" class="menu-link" data-section="settings"><span class="nav-icon">⚙</span><span>Settings</span></a>
+      </nav>
+      <div class="sidebar-note"><span class="note-orb">✧</span><p>Your future is built on the data you explore.</p><span class="note-caption">DISCOVER. LEARN. GROW.</span></div>
+    </aside>
+
+    <main class="dashboard-main">
+      <header class="dashboard-topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-button" id="mobileMenuButton" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="dashboardSidebar">☰</button>
+          <div class="breadcrumb"><span class="status-dot"></span> CAREERSCOPE <span class="muted">/ OVERVIEW</span></div>
+        </div>
+        <label class="topbar-search"><span class="search-icon">⌕</span><input type="search" id="dashboardSearch" placeholder="Search dashboard sections..." aria-label="Search dashboard sections" autocomplete="off"><kbd>↵</kbd><div class="search-results" id="searchResults" hidden></div></label>
+        <div class="topbar-right">
+          <div class="dataset-status"><span class="dataset-icon">◉</span><span><strong>Sample Dataset</strong><small>DEMO DATA</small></span><span class="status-dot"></span></div>
+          <div class="profile-menu" id="profileMenu">
+            <button class="profile-chip" id="profileButton" type="button" aria-expanded="false" aria-controls="profileDropdown"><span class="avatar" id="profileAvatar">E</span><span id="welcomeName">Explorer</span><span class="profile-chevron">⌄</span></button>
+            <div class="profile-dropdown" id="profileDropdown" hidden><p class="dropdown-label">SIGNED IN AS</p><strong id="profileFullName">Explorer</strong><span class="guest-label">Guest session</span><a href="#profile" class="dropdown-link">My Profile →</a><button type="button" class="dropdown-link logout-button" id="logoutButton">Exit guest session ↗</button></div>
+          </div>
+        </div>
+      </header>
+
+      <section class="dashboard-welcome" id="overview">
+        <div class="welcome-copy"><p class="eyebrow">YOUR CAREER INTELLIGENCE SPACE</p><h1>Your future,<br><span class="gradient-text">decoded.</span></h1><p class="welcome-description">Explore job market trends, discover in-demand skills, and find your next career opportunity.</p><a href="#trends" class="explore-button">EXPLORE YOUR DASHBOARD ↗</a></div>
+        <div class="orbital-visual" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit orbit-three"></div><div class="planet"></div><span class="orbit-dot dot-one"></span><span class="orbit-dot dot-two"></span><span class="orbit-dot dot-three"></span></div>
+      </section>
+
+      <section class="metrics-section" aria-labelledby="metricsTitle">
+        <div class="section-heading"><div><p class="eyebrow">LIVE VIEW / DEMO METRICS</p><h2 id="metricsTitle">Market at a glance</h2></div><label class="period-control">PERIOD <select id="metricPeriod" aria-label="Metric period"><option value="30">Last 30 days</option><option value="90">Last 90 days</option><option value="365">Last 12 months</option></select></label></div>
+        <div class="metric-grid">
+          <article class="metric-card"><div class="metric-top"><span class="metric-icon cyan-icon">↗</span><span class="metric-trend positive">↑ 12.8%</span></div><p class="metric-label">JOB OPENINGS TRACKED</p><strong class="metric-value" id="openingsMetric">24,860</strong><span class="metric-foot">Across selected sample roles</span></article>
+          <article class="metric-card"><div class="metric-top"><span class="metric-icon violet-icon">◈</span><span class="metric-trend positive">↑ 6.4%</span></div><p class="metric-label">MEDIAN ANNUAL SALARY</p><strong class="metric-value" id="salaryMetric">₹12.4L</strong><span class="metric-foot">Illustrative annual salary</span></article>
+          <article class="metric-card"><div class="metric-top"><span class="metric-icon cyan-icon">◇</span><span class="metric-trend positive">↑ 8.1%</span></div><p class="metric-label">IN-DEMAND SKILLS</p><strong class="metric-value" id="skillsMetric">148</strong><span class="metric-foot">Skills appearing in sample roles</span></article>
+          <article class="metric-card"><div class="metric-top"><span class="metric-icon violet-icon">◎</span><span class="metric-trend neutral">Top category</span></div><p class="metric-label">FAST-GROWING ROLE</p><strong class="metric-value metric-role" id="roleMetric">Data Analyst</strong><span class="metric-foot">Based on this demo dataset</span></article>
+        </div>
+        <p class="demo-disclaimer"><span class="status-dot"></span> These are illustrative demo figures, not live job-market data.</p>
+      </section>
+
+      <section class="charts-section" id="trends">
+        <div class="section-heading chart-heading"><div><p class="eyebrow"> MARKET INTELLIGENCE</p><h2>Job market trends</h2><p class="section-subtitle">Explore how sample demand and hiring activity change over time.</p></div><label class="period-control">VIEW <select id="trendView" aria-label="Choose trend chart"><option value="openings">Job openings</option><option value="applications">Hiring activity</option></select></label></div>
+        <div class="chart-grid">
+          <article class="chart-card chart-card-wide"><div class="chart-card-header"><div><h3 id="trendChartTitle">Openings over time</h3><p>Monthly sample volume</p></div><span class="chart-tag">TREND LINE</span></div><div class="chart-wrap"><canvas id="trendChart" role="img" aria-label="Line chart showing sample job openings over time"></canvas></div></article>
+          <article class="chart-card"><div class="chart-card-header"><div><h3>Demand by category</h3><p>Share of sample job listings</p></div><span class="chart-tag">BREAKDOWN</span></div><div class="chart-wrap chart-wrap-donut"><canvas id="categoryChart" role="img" aria-label="Doughnut chart showing sample demand by job category"></canvas></div><div class="chart-legend" id="categoryLegend"></div></article>
+          <article class="chart-card"><div class="chart-card-header"><div><h3>Top requested skills</h3><p>Mentions in sample listings</p></div><span class="chart-tag">TOP 5</span></div><div class="chart-wrap chart-wrap-bars"><canvas id="skillsChart" role="img" aria-label="Bar chart showing top requested skills in sample listings"></canvas></div></article>
+          <article class="chart-card">
+  <div class="chart-card-header">
+    <div>
+      <h3>Salary by location</h3>
+      <p>Illustrative median annual salary</p>
+    </div>
+    <span class="chart-tag">₹ / LPA</span>
+  </div>
+
+  <div class="chart-wrap chart-wrap-bars">
+    <canvas id="salaryChart"
+      role="img"
+      aria-label="Illustrative annual salary comparison by city">
+    </canvas>
+  </div>
+</article>
+        </div>
+      </section>
+
+
+      <section class="job-explorer-section" id="jobs">
+  <p class="eyebrow">OPPORTUNITIES</p>
+  <h2>Explore Jobs</h2>
+  <p class="section-subtitle">
+    Discover opportunities, compare salaries, and find your next career move.
+  </p>
+
+  <div class="job-search-panel">
+    <label class="job-keyword-field">
+      <span>SEARCH OPPORTUNITIES</span>
+      <input id="jobSearch" type="search"
+        placeholder="Search job title, company, skill, or city...">
+    </label>
+    <button type="button" id="clearJobFilters" class="job-action-button">
+      Reset filters ↺
+    </button>
+  </div>
+
+  <div class="job-filter-grid">
+    <label>LOCATION
+      <select id="jobLocation">
+        <option value="">All locations</option>
+        <option>Hyderabad</option>
+        <option>Bengaluru</option>
+        <option>Pune</option>
+        <option>Chennai</option>
+        <option>Remote</option>
+      </select>
+    </label>
+
+    <label>WORK STYLE
+      <select id="jobType">
+        <option value="">Any work style</option>
+        <option>Remote</option>
+        <option>Hybrid</option>
+        <option>On-site</option>
+      </select>
+    </label>
+
+    <label>EXPERIENCE
+      <select id="jobExperience">
+        <option value="">Any experience</option>
+        <option>Entry level</option>
+        <option>Mid level</option>
+        <option>Senior</option>
+      </select>
+    </label>
+
+    <label>CATEGORY
+      <select id="jobCategory">
+        <option value="">All categories</option>
+        <option>Analytics</option>
+        <option>Engineering</option>
+        <option>Design</option>
+        <option>Product</option>
+        <option>AI &amp; Data Science</option>
+      </select>
+    </label>
+
+    <label>MINIMUM SALARY
+      <select id="jobSalary">
+        <option value="0">Any salary</option>
+        <option value="8">₹8 LPA+</option>
+        <option value="12">₹12 LPA+</option>
+        <option value="16">₹16 LPA+</option>
+        <option value="20">₹20 LPA+</option>
+      </select>
+    </label>
+
+    <label>SORT RESULTS
+      <select id="jobSort">
+        <option value="recommended">Recommended</option>
+        <option value="salary-high">Highest salary</option>
+        <option value="salary-low">Lowest salary</option>
+        <option value="title">Job title A–Z</option>
+      </select>
+    </label>
+  </div>
+
+  <div class="job-results-toolbar">
+    <p id="jobResultCount" aria-live="polite">Loading jobs...</p>
+    <span class="job-demo-tag">● DEMO LISTINGS</span>
+  </div>
+
+  <div id="jobResults" class="job-results-grid"></div>
+</section>
+      <section class="salary-explorer-section" id="salary">
+  <p class="eyebrow">MARKET DATA</p>
+  <h2>Salary &amp; Locations</h2>
+  <p class="salary-intro">
+    Compare salary potential, hiring locations, and estimated living costs.
+  </p>
+
+  <div class="salary-controls">
+    <label>
+      SELECT CAREER ROLE
+      <select id="salaryRole">
+        <option value="Data Analyst">Data Analyst</option>
+        <option value="Frontend Developer">Frontend Developer</option>
+        <option value="Data Scientist">Data Scientist</option>
+        <option value="UI/UX Designer">UI/UX Designer</option>
+        <option value="Backend Developer">Backend Developer</option>
+      </select>
+    </label>
+
+    <label>
+      EXPERIENCE LEVEL
+      <select id="salaryExperience">
+        <option value="entry">Entry level</option>
+        <option value="mid" selected>Mid level</option>
+        <option value="senior">Senior level</option>
+      </select>
+    </label>
+
+    <label>
+      COMPARE BY
+      <select id="salaryCompareMetric">
+        <option value="salary">Annual salary</option>
+        <option value="takehome">Estimated salary after expenses</option>
+      </select>
+    </label>
+  </div>
+
+  <div class="salary-stat-grid">
+    <article class="salary-stat-card">
+      <span class="salary-stat-label">HIGHEST CITY MIDPOINT</span>
+      <strong id="salaryHighest">—</strong>
+      <small id="salaryHighestCity">Based on selected role</small>
+    </article>
+
+    <article class="salary-stat-card">
+      <span class="salary-stat-label">CITY COMPARISON</span>
+      <strong id="salaryCityCount">5 cities</strong>
+      <small>Illustrative estimates</small>
+    </article>
+
+    <article class="salary-stat-card">
+      <span class="salary-stat-label">TOP ESTIMATED TAKE-HOME</span>
+      <strong id="salaryTakehome">—</strong>
+      <small>After estimated living costs</small>
+    </article>
+  </div>
+
+  <div class="salary-content-grid">
+    <article class="salary-panel salary-chart-panel">
+      <div class="salary-panel-heading">
+        <div>
+          <p class="eyebrow">CITY BREAKDOWN</p>
+          <h3 id="salaryChartTitle">Data Analyst salaries</h3>
+        </div>
+        <span class="salary-demo-label">DEMO DATA</span>
+      </div>
+
+      <p class="salary-chart-description" id="salaryChartDescription">
+        Estimated annual salary by city, in Indian rupees.
+      </p>
+
+      <div id="salaryCityChart" class="salary-city-chart"
+        role="img" aria-label="Interactive salary comparison by city"></div>
+
+      <div class="salary-chart-legend">
+        <span><i class="salary-legend-dot"></i> Estimated salary</span>
+        <span><i class="salary-legend-dot salary-legend-secondary"></i> Range indicator</span>
+      </div>
+    </article>
+
+    <article class="salary-panel salary-expense-panel">
+      <div class="salary-panel-heading">
+        <div>
+          <p class="eyebrow">LIFESTYLE ESTIMATE</p>
+          <h3>Monthly living costs</h3>
+        </div>
+      </div>
+
+      <p class="salary-chart-description">
+        Example monthly budget for one person. Select a city below.
+      </p>
+
+      <label class="salary-city-picker">
+        SELECT CITY
+        <select id="salaryCostCity">
+          <option>Hyderabad</option>
+          <option>Bengaluru</option>
+          <option>Pune</option>
+          <option>Chennai</option>
+          <option>Mumbai</option>
+        </select>
+      </label>
+
+      <div class="salary-expense-total">
+        <span>ESTIMATED MONTHLY TOTAL</span>
+        <strong id="salaryMonthlyCost">—</strong>
+      </div>
+
+      <div id="salaryExpenseBreakdown" class="salary-expense-breakdown"></div>
+
+      <div class="salary-takehome-box">
+        <span>ILLUSTRATIVE MONTHLY BALANCE</span>
+        <strong id="salaryMonthlyBalance">—</strong>
+        <small>Salary midpoint minus estimated expenses and a simplified 20% deduction allowance. Not a tax calculation.</small>
+      </div>
+    </article>
+  </div>
+
+  <article class="salary-panel salary-table-panel">
+    <div class="salary-panel-heading">
+      <div>
+        <p class="eyebrow">LOCATION INTELLIGENCE</p>
+        <h3>Compare all cities</h3>
+      </div>
+      <span class="salary-demo-label">ILLUSTRATIVE FIGURES</span>
+    </div>
+
+    <div class="salary-table-scroll">
+      <table class="salary-comparison-table">
+        <thead>
+          <tr>
+            <th>City</th>
+            <th>Annual salary range</th>
+            <th>Monthly expenses</th>
+            <th>Estimated monthly balance</th>
+          </tr>
+        </thead>
+        <tbody id="salaryComparisonRows"></tbody>
+      </table>
+    </div>
+
+    <p class="salary-footnote">
+      These sample figures are for demonstrating the dashboard only. Actual
+      compensation and living costs vary with employer, skills, experience,
+      housing, lifestyle, and tax situation. Verify real-world figures before
+      making career or relocation decisions.
+    </p>
+  </article>
+</section>
+      <section class="section-placeholder feature-section" id="careers">
+  <p class="eyebrow">CAREER PATHS</p>
+
+  <div class="career-heading">
+    <div>
+      <h2>Career Explorer</h2>
+      <p class="section-subtitle">
+        Discover career paths, explore essential skills, and find your next move.
+      </p>
+    </div>
+    <span class="career-live-badge">
+      <span class="career-live-dot"></span>
+      EXPLORE ROLES
+    </span>
+  </div>
+
+  <div class="career-toolbar">
+    <div class="career-search-wrap">
+      <span class="career-search-icon">⌕</span>
+      <input
+        type="search"
+        id="careerSearchInput"
+        class="career-search"
+        placeholder="Search job titles or skills..."
+        aria-label="Search careers"
+      />
+    </div>
+
+    <select id="careerLevelFilter" class="career-filter" aria-label="Filter by career level">
+      <option value="all">All experience levels</option>
+      <option value="Entry">Entry level</option>
+      <option value="Mid">Mid level</option>
+      <option value="Senior">Senior level</option>
+    </select>
+  </div>
+
+  <div class="career-stats">
+    <div class="career-stat-card">
+      <span class="career-stat-label">CAREER PATHS</span>
+      <strong id="careerCount">06</strong>
+      <span class="career-stat-note">Paths to explore</span>
+    </div>
+    <div class="career-stat-card">
+      <span class="career-stat-label">CORE SKILLS</span>
+      <strong id="careerSkillCount">18</strong>
+      <span class="career-stat-note">Skills to develop</span>
+    </div>
+    <div class="career-stat-card">
+      <span class="career-stat-label">YOUR NEXT STEP</span>
+      <strong class="career-stat-symbol">↗</strong>
+      <span class="career-stat-note">Start with one skill</span>
+    </div>
+  </div>
+
+  <div class="career-section-label">
+    <h3>Explore career paths</h3>
+    <span id="careerResultLabel">06 ROLES</span>
+  </div>
+
+  <div id="careerResults" class="career-grid"></div>
+
+  <div id="careerEmptyState" class="career-empty" hidden>
+    <span>⌕</span>
+    <h3>No matching careers</h3>
+    <p>Try another job title, skill, or experience level.</p>
+  </div>
+
+  <div class="career-roadmap" id="careerRoadmap">
+    <div class="roadmap-topline"></div>
+
+    <div class="roadmap-header">
+      <div>
+        <p class="eyebrow">YOUR DEVELOPMENT PLAN</p>
+        <h3>Build your skill roadmap<span>.</span></h3>
+        <p class="section-subtitle">
+          Select a career above, then track the skills you want to develop.
+        </p>
+      </div>
+      <div class="roadmap-progress-ring" id="careerProgressRing">
+        <div class="roadmap-progress-inner">
+          <strong id="careerProgressPercent">0%</strong>
+          <span>COMPLETE</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="roadmap-role">
+      <div class="roadmap-role-icon" id="roadmapRoleIcon">✳</div>
+      <div>
+        <span class="career-stat-label">SELECTED CAREER</span>
+        <h4 id="roadmapRoleTitle">Frontend Developer</h4>
+      </div>
+      <span id="roadmapSkillCount" class="roadmap-skill-count">0 / 0 SKILLS</span>
+    </div>
+
+    <div id="careerSkillChecklist" class="career-skill-list"></div>
+
+    <div class="roadmap-footer">
+      <p id="careerRoadmapMessage">Every expert starts with one skill.</p>
+      <button type="button" id="careerResetSkills" class="career-reset-btn">
+        Reset progress ↺
+      </button>
+    </div>
+  </div>
+  <!-- STEP 7: CAREER MATCH & RECOMMENDATIONS -->
+<section class="section-placeholder feature-section" id="careerMatch">
+  <p class="eyebrow">CAREER MATCH</p>
+
+  <div class="csm-heading">
+    <div>
+      <h2>Find Your Career Fit<span>.</span></h2>
+      <p class="section-subtitle">
+        Turn your skills and interests into personalized career recommendations.
+      </p>
+    </div>
+    <div class="csm-status">
+      <span class="csm-status-dot"></span>
+      PERSONALIZED MATCHING
+    </div>
+  </div>
+
+  <div class="csm-layout">
+    <!-- Preferences panel -->
+    <div class="csm-panel csm-preferences">
+      <div class="csm-panel-heading">
+        <span class="csm-step-number">01</span>
+        <div>
+          <h3>Your profile</h3>
+          <p>Tell us what you know and what you enjoy.</p>
+        </div>
+      </div>
+
+      <label class="csm-label" for="csmSkillsInput">
+        YOUR CURRENT SKILLS
+      </label>
+      <textarea
+        id="csmSkillsInput"
+        class="csm-textarea"
+        rows="4"
+        placeholder="e.g. JavaScript, Python, SQL, Figma"
+      ></textarea>
+      <p class="csm-hint">
+        Separate skills with commas. Add skills you know, even if you're still learning.
+      </p>
+
+      <div class="csm-field-heading">
+        <span class="csm-label">CAREER INTERESTS</span>
+        <span class="csm-optional">SELECT ALL THAT APPLY</span>
+      </div>
+
+      <div class="csm-interest-grid">
+        <label class="csm-interest-option">
+          <input type="checkbox" name="csmInterest" value="development" />
+          <span class="csm-interest-icon">⌘</span>
+          <span>Software & Web</span>
+        </label>
+
+        <label class="csm-interest-option">
+          <input type="checkbox" name="csmInterest" value="data" />
+          <span class="csm-interest-icon">▥</span>
+          <span>Data & AI</span>
+        </label>
+
+        <label class="csm-interest-option">
+          <input type="checkbox" name="csmInterest" value="design" />
+          <span class="csm-interest-icon">✳</span>
+          <span>Design & UX</span>
+        </label>
+
+        <label class="csm-interest-option">
+          <input type="checkbox" name="csmInterest" value="business" />
+          <span class="csm-interest-icon">↗</span>
+          <span>Business & Product</span>
+        </label>
+
+        <label class="csm-interest-option">
+          <input type="checkbox" name="csmInterest" value="security" />
+          <span class="csm-interest-icon">⬡</span>
+          <span>Cybersecurity</span>
+        </label>
+
+        <label class="csm-interest-option">
+          <input type="checkbox" name="csmInterest" value="cloud" />
+          <span class="csm-interest-icon">☁</span>
+          <span>Cloud & Systems</span>
+        </label>
+      </div>
+
+      <button type="button" id="csmFindMatches" class="csm-match-button">
+        Find my career matches
+        <span aria-hidden="true">↗</span>
+      </button>
+
+      <p class="csm-privacy-note">
+        <span>✦</span>
+        Your profile is evaluated in this browser demo.
+      </p>
+    </div>
+
+    <!-- Results panel -->
+    <div class="csm-results-column">
+      <div class="csm-summary-panel">
+        <div>
+          <span class="csm-summary-label">YOUR TOP CAREER MATCH</span>
+          <h3 id="csmTopCareer">Ready to explore?</h3>
+          <p id="csmTopDescription">
+            Add your skills and interests to discover career paths that may fit you.
+          </p>
+        </div>
+
+        <div class="csm-score-circle" id="csmTopScoreRing">
+          <div class="csm-score-inner">
+            <strong id="csmTopScore">--</strong>
+            <span>MATCH</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="csm-results-heading">
+        <div>
+          <h3>Recommended paths</h3>
+          <p>Ranked by your skills and selected interests.</p>
+        </div>
+        <span id="csmResultsCount">0 PATHS</span>
+      </div>
+
+      <div id="csmRecommendationList" class="csm-recommendation-list">
+        <div class="csm-empty-state">
+          <span class="csm-empty-icon">✳</span>
+          <h4>Your next opportunity starts here.</h4>
+          <p>Complete your profile and select “Find my career matches.”</p>
+        </div>
+      </div>
+
+      <p class="csm-disclaimer">
+        Match scores are illustrative estimates based on the skills and interests
+        you enter, not guarantees of job suitability or employment outcomes.
+      </p>
+    </div>
+  </div>
+</section>
+</section>
+      <section class="section-placeholder feature-section personal-section" id="profile"><p class="eyebrow">05 / YOUR PROFILE</p><h2>My Profile</h2><p class="section-subtitle">Edit your career preferences. This demo saves them in this browser.</p><form id="profileForm" class="feature-form"><label>Full name<input name="name" id="profileNameInput" placeholder="Your name"></label><label>Target role<input name="role" id="profileRoleInput" placeholder="e.g. Data Analyst"></label><label>Experience<select name="experience" id="profileExperience"><option>Student / Fresher</option><option>0–2 years</option><option>3–5 years</option><option>6+ years</option></select></label><label>Skills<input name="skills" id="profileSkillsInput" placeholder="SQL, Python, Excel"></label><label>Preferred location<input name="location" id="profileLocationInput" placeholder="Hyderabad / Remote"></label><button class="explore-button" type="submit">SAVE PROFILE ↗</button><p id="profileStatus" class="inline-status" aria-live="polite"></p></form></section>
+      <section class="section-placeholder feature-section personal-section" id="resume"><p class="eyebrow">06 / RESUME INTELLIGENCE</p><h2>Resume Analyzer</h2><p class="section-subtitle">Select a text-based resume file to run a lightweight browser-only keyword check. Your file is not uploaded.</p><div class="feature-form"><label>Choose resume (.txt)<input type="file" id="resumeFile" accept=".txt,text/plain"></label><button type="button" class="explore-button" id="analyzeResume">ANALYZE RESUME ↗</button><div id="resumeResults" class="result-panel" aria-live="polite">Your keyword analysis will appear here.</div></div></section>
+      <section class="section-placeholder feature-section personal-section" id="skills"><p class="eyebrow">07 / SKILL INTELLIGENCE</p><h2>Skill Gap & Roadmap</h2><p class="section-subtitle">Pick a target role and mark the skills you already have to build a simple learning checklist.</p><label>Target role <select id="skillRole"><option>Data Analyst</option><option>Software Engineer</option><option>UX Designer</option><option>Product Manager</option></select></label><div id="skillChecklist" class="checklist"></div><p id="skillSummary" class="inline-status"></p></section>
+      <section class="section-placeholder feature-section personal-section" id="learning"><p class="eyebrow">08 / LEARNING HUB</p><h2>Learning & Interviews</h2><p class="section-subtitle">Track small preparation milestones. Check items off as you complete them.</p><div id="learningList" class="checklist"></div></section>
+      <section class="section-placeholder feature-section personal-section" id="applications"><p class="eyebrow">09 / APPLICATION TRACKER</p><h2>Applications</h2><p class="section-subtitle">Track roles and update each application stage.</p><form id="applicationForm" class="feature-controls"><input id="applicationRole" placeholder="Role / company" required><select id="applicationStage"><option>Interested</option><option>Applied</option><option>Interview</option><option>Offer</option><option>Rejected</option></select><button class="explore-button" type="submit">ADD APPLICATION +</button></form><div id="applicationList" class="feature-grid"></div></section>
+      <section class="section-placeholder feature-section personal-section" id="saved"><p class="eyebrow">10 / SAVED ITEMS</p><h2>Your Saved Items</h2><p class="section-subtitle">Saved jobs and career paths are stored locally in this browser.</p><div id="savedItems" class="feature-grid"></div></section>
+      <section class="section-placeholder feature-section personal-section" id="settings"><p class="eyebrow">11 / PREFERENCES</p><h2>Settings</h2><p class="section-subtitle">Manage this local demo's preferences and saved data.</p><div class="feature-form"><label><input type="checkbox" id="compactMode"> Compact dashboard spacing</label><label><input type="checkbox" id="reduceMotion"> Reduce chart animation</label><button type="button" class="explore-button" id="saveSettings">SAVE PREFERENCES ↗</button><button type="button" class="danger-button" id="clearData">CLEAR LOCAL DEMO DATA</button><p id="settingsStatus" class="inline-status" aria-live="polite"></p></div></section>
+      
+      <footer class="dashboard-footer">CAREERSCOPE <span>·</span> DISCOVER. LEARN. GROW.</footer>
+    </main>
+  </div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="dashboard.js"></script>
+</body>
+</html>
